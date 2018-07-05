@@ -13,4 +13,4 @@ RUN	/srv/lg/extra/adduser.sh
 
 WORKDIR	/srv/lg
 CMD	uwsgi -p 16 --http-socket 0.0.0.0:8080 --uid lg -w glass:app
-EXPOSE	5000
+EXPOSE	8080
