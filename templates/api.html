@@ -8,7 +8,7 @@
 
         <h3>/api/[method]/[target]</h3>
         <ul>
-            <li><em>method</em> - 'ping' or 'mtr' or 'iperf3'
+            <li><em>method</em> - 'ping' or 'mtr' or 'iperf3' or 'nping'
             <li><em>target</em> - Hostname or IP to ping</li>
         </ul>
 
@@ -66,5 +66,34 @@ Connecting to host iperf.scottlinux.com, port 5201
 [  4]   0.00-10.00  sec  6.41 MBytes  5.38 Mbits/sec                  receiver
 
 iperf Done.</pre>
+
+        <pre>
+$ curl http://localhost:8080/api/nping/iperf.scottlinux.com
+
+Starting Nping 0.7.40 ( https://nmap.org/nping ) at 2018-07-13 15:36 UTC
+SENT (0.0029s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (0.1201s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (1.0099s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (1.1288s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (2.0162s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (2.1358s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (3.0234s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (3.1448s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (4.0283s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (4.1472s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (5.0311s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (5.1520s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (6.0390s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (6.1608s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (7.0436s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (7.1631s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (8.0469s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (8.1675s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+SENT (9.0513s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
+RCVD (9.1732s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
+
+Max rtt: 121.886ms | Min rtt: 117.254ms | Avg rtt: 120.095ms
+TCP connection attempts: 10 | Successful connections: 10 | Failed: 0 (0.00%)
+Nping done: 1 IP address pinged in 9.17 seconds</pre>
     </div>
 {% endblock %}

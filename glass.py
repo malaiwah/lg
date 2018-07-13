@@ -34,6 +34,12 @@ def api_iperf3(target):
     log(request, method='iperf3', target=target)
     return do('iperf3', target)
 
+@app.route('/api/nping/<target>')
+def api_nping(target):
+    print(target)
+    log(request, method='nping', target=target)
+    return do('nping', target)
+
 @app.route('/api/ping/<target>')
 def api_ping(target):
     print(target)
@@ -54,6 +60,8 @@ def do(method, target):
     if target:
         if method == 'iperf3':
             result = iperf3(target)
+        elif method == 'nping':
+            result = nping(target)
         elif method == 'ping':
             result = ping(target)
         elif method == 'mtr':
@@ -77,6 +85,8 @@ def iperf3(dest):
 def ping(dest, count=10):
     return sh.ping(dest, c=count, _ok_code=[0, 1, 2])
 
+def nping(dest, count=10):
+    return sh.nping(dest, c=count, _ok_code=[0, 1, 2])
 
 def mtr(dest, count=10):
     return sh.mtr(dest, r=True, w=True, c=count, _ok_code=[0, 1])
