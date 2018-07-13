@@ -1,7 +1,7 @@
 FROM 	tiangolo/uwsgi-nginx:python2.7
 
 RUN	apt-get update
-RUN	apt-get install -y mtr-tiny iputils-ping
+RUN	apt-get install -y mtr-tiny iputils-ping iperf3 nmap
 
 COPY	requirements.txt glass.py /srv/lg/
 COPY	extra /srv/lg/extra/

@@ -28,12 +28,17 @@ def api():
     return render_template('api.html')
 
 
+@app.route('/api/iperf3/<target>')
+def api_iperf3(target):
+    print(target)
+    log(request, method='iperf3', target=target)
+    return do('iperf3', target)
+
 @app.route('/api/ping/<target>')
 def api_ping(target):
     print(target)
     log(request, method='ping', target=target)
     return do('ping', target)
-
 
 @app.route('/api/mtr/<target>')
 def api_mtr(target):
@@ -47,7 +52,9 @@ def do(method, target):
 
     target = sanitize(target)
     if target:
-        if method == 'ping':
+        if method == 'iperf3':
+            result = iperf3(target)
+        elif method == 'ping':
             result = ping(target)
         elif method == 'mtr':
             result = mtr(target)
@@ -62,6 +69,10 @@ def do(method, target):
 
     return output
 
+
+def iperf3(dest):
+    # need -c for client
+    return sh.iperf3('-c', dest, _ok_code=[0, 1, 2])
 
 def ping(dest, count=10):
     return sh.ping(dest, c=count, _ok_code=[0, 1, 2])
