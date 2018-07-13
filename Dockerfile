@@ -1,7 +1,7 @@
 FROM 	tiangolo/uwsgi-nginx:python2.7
 
-RUN	apt-get update
-RUN	apt-get install -y mtr-tiny iputils-ping iperf3 nmap
+RUN	apt-get update && apt-get install -y mtr-tiny iputils-ping iperf3 nmap supervisor
+RUN	mkdir -p /var/log/supervisor
 
 COPY	requirements.txt glass.py /srv/lg/
 COPY	extra /srv/lg/extra/
@@ -11,6 +11,8 @@ RUN 	pip install -r /srv/lg/requirements.txt
 
 RUN	/srv/lg/extra/adduser.sh
 
-WORKDIR	/srv/lg
-CMD	uwsgi -p 16 --http-socket 0.0.0.0:8080 --uid lg -w glass:app
+COPY	supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+CMD	["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 EXPOSE	8080
+EXPOSE	5201
