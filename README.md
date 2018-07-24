@@ -1,9 +1,10 @@
 # Looking Glass
 
-This is a simple, not-very-cleverly-named looking glass tool. Supports pinging and MTRing arbitrary addresses.
+This is a simple, not-very-cleverly-named looking glass tool. Supports pinging and MTRing arbitrary addresses. Also supports nping (tcp-ping on port 80) and iperf3 client.
 
 ## Docker Image
-Simply running `sudo docker run -d malaiwah/lg` will get you a container running this app under http on port 8080, in an rbash environment restricted to only running `ping` and `mtr`.
+Simply running `sudo docker run -d -p 8080:8080 malaiwah/lg` will get you a container running this app under http on port 8080, in an rbash environment restricted to only running `ping` and `mtr`.
+You can also expose port 5201 (`-p 5201:5201`) to allow connections to the iPerf3 daemon.
 
 ## Caveats
 
