@@ -1,7 +1,7 @@
 FROM 	tiangolo/uwsgi-nginx:python2.7
 MAINTAINER Michel Belleau <michel.belleau@malaiwah.com>
 
-RUN	apt-get update && apt-get install -y mtr-tiny iputils-ping iperf3 nmap supervisor
+RUN	apt-get update && apt-get install -y mtr-tiny iputils-ping iperf3 nmap unbound-host supervisor
 RUN	mkdir -p /var/log/supervisor
 
 COPY	requirements.txt glass.py /srv/lg/

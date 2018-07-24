@@ -28,6 +28,12 @@ def api():
     return render_template('api.html')
 
 
+@app.route('/api/host/<target>')
+def api_host(target):
+    print(target)
+    log(request, method='host', target=target)
+    return do('host', target)
+
 @app.route('/api/iperf3/<target>')
 def api_iperf3(target):
     print(target)
@@ -60,6 +66,8 @@ def do(method, target):
     if target:
         if method == 'iperf3':
             result = iperf3(target)
+        elif method == 'host':
+            result = host(target)
         elif method == 'nping':
             result = nping(target)
         elif method == 'ping':
@@ -77,6 +85,9 @@ def do(method, target):
 
     return output
 
+
+def host(dest):
+    return sh.unbound_host(dest, _ok_code=[0, 1, 2])
 
 def iperf3(dest):
     # need -c for client

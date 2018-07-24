@@ -8,7 +8,7 @@
 
         <h3>/api/[method]/[target]</h3>
         <ul>
-            <li><em>method</em> - 'ping' or 'mtr' or 'iperf3' or 'nping'
+            <li><em>method</em> - 'ping' or 'mtr' or 'iperf3' or 'nping' or 'host'
             <li><em>target</em> - Hostname or IP to ping</li>
         </ul>
 
@@ -95,5 +95,15 @@ RCVD (9.1732s) Handshake with iperf.scottlinux.com:80 (45.33.39.39:80) completed
 Max rtt: 121.886ms | Min rtt: 117.254ms | Avg rtt: 120.095ms
 TCP connection attempts: 10 | Successful connections: 10 | Failed: 0 (0.00%)
 Nping done: 1 IP address pinged in 9.17 seconds</pre>
+
+        <pre>
+$ curl http://localhost:8080/api/host/google.com
+google.com has address 172.217.9.46
+google.com has IPv6 address 2607:f8b0:4009:815::200e
+google.com mail is handled by 50 alt4.aspmx.l.google.com.
+google.com mail is handled by 10 aspmx.l.google.com.
+google.com mail is handled by 30 alt2.aspmx.l.google.com.
+google.com mail is handled by 40 alt3.aspmx.l.google.com.
+google.com mail is handled by 20 alt1.aspmx.l.google.com.</pre>
     </div>
 {% endblock %}
