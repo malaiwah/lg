@@ -1,4 +1,7 @@
+[![Docker Stars](https://img.shields.io/docker/stars/malaiwah/lg.svg)](https://hub.docker.com/r/malaiwah/lg/) [![Docker Pulls](https://img.shields.io/docker/pulls/malaiwah/lg.svg)](https://hub.docker.com/r/malaiwah/lg/)
 # Looking Glass
+[![](https://images.microbadger.com/badges/version/malaiwah/lg.svg)](https://microbadger.com/images/malaiwah/lg "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/malaiwah/lg.svg)](https://microbadger.com/images/malaiwah/lg "Get your own image badge on microbadger.com")
 
 This is a simple, not-very-cleverly-named looking glass tool. Supports pinging and MTRing arbitrary addresses. Also supports nping (tcp-ping on port 80) and iperf3 client.
 
