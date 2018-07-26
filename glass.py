@@ -100,7 +100,7 @@ def nping(dest, count=10):
     return sh.nping(dest, c=count, _ok_code=[0, 1, 2])
 
 def mtr(dest, count=10):
-    return sh.mtr(dest, r=True, w=True, c=count, _ok_code=[0, 1])
+    return sh.mtr(dest, b=True, r=True, w=True, c=count, _ok_code=[0, 1])
 
 
 def sanitize(dirty_target):
