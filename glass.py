@@ -4,7 +4,9 @@ import datetime
 import re
 
 import sh
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response
+
+from functools import wraps
 
 app = Flask("lg")
 app.debug = True
@@ -27,32 +29,45 @@ def go():
 def api():
     return render_template('api.html')
 
+def returns_plaintext(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        r = f(*args, **kwargs)
+        response = make_response(r)
+        response.headers['Content-Type'] = 'text/plain; charset=utf-8'
+        return response
+    return decorated_function
 
 @app.route('/api/host/<target>')
+@returns_plaintext
 def api_host(target):
     print(target)
     log(request, method='host', target=target)
     return do('host', target)
 
 @app.route('/api/iperf3/<target>')
+@returns_plaintext
 def api_iperf3(target):
     print(target)
     log(request, method='iperf3', target=target)
     return do('iperf3', target)
 
 @app.route('/api/nping/<target>')
+@returns_plaintext
 def api_nping(target):
     print(target)
     log(request, method='nping', target=target)
     return do('nping', target)
 
 @app.route('/api/ping/<target>')
+@returns_plaintext
 def api_ping(target):
     print(target)
     log(request, method='ping', target=target)
     return do('ping', target)
 
 @app.route('/api/mtr/<target>')
+@returns_plaintext
 def api_mtr(target):
     log(request, method='mtr', target=target)
     return do('mtr', target=target)
