@@ -30,12 +30,10 @@ spec:
       imagePullSecrets:
       - name: picocloud
       containers:
-      - image: docker.picocloud.me/lg:latest
+      - image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
         name: looking-glass
-        imagePullPolicy: Always
         ports:
         - containerPort: 8080
-          name: looking-glass
 
 ---
 apiVersion: extensions/v1beta1
