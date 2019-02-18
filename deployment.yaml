@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: looking-glass
+  labels:
+    app: looking-glass
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: looking-glass
+    tier: looking-glass
+  type: ClusterIP
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: looking-glass
+  labels:
+    app: looking-glass
+spec:
+  template:
+    metadata:
+      labels:
+        app: looking-glass
+        tier: looking-glass
+    spec:
+      imagePullSecrets:
+      - name: picocloud
+      containers:
+      - image: docker.picocloud.me/lg:latest
+        name: looking-glass
+        ports:
+        - containerPort: 8080
+          name: looking-glass
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: looking-glass
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: 'true'
+spec:
+  tls:
+  - hosts:
+    - lg.kube.picocloud.me
+    secretName: lg-kube-crt
+  rules:
+  - host: lg.kube.picocloud.me
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: looking-glass
+          servicePort: 8080
