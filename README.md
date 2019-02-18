@@ -8,3 +8,6 @@ This is a simple, not-very-cleverly-named looking glass tool. Supports pinging a
 ## Docker Image
 Simply running `sudo docker run -d -p 8080:8080 malaiwah/lg` will get you a container running this app under http on port 8080, in an rbash environment restricted to only running `ping` and `mtr`.
 You can also expose port 5201 (`-p 5201:5201`) to allow connections to the iPerf3 daemon.
+
+## Kubernetes Deployment
+You can use the "deployment.yaml" file as an example on how to deploy the looking glass as a sample k8s application
