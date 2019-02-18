@@ -27,12 +27,12 @@ spec:
         app: looking-glass
         tier: looking-glass
     spec:
-      imagePullPolicy: Always
       imagePullSecrets:
       - name: picocloud
       containers:
       - image: docker.picocloud.me/lg:latest
         name: looking-glass
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: looking-glass
