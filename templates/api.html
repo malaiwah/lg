@@ -46,7 +46,7 @@ HOST: 44885de76d20                   Loss%   Snt   Last   Avg  Best  Wrst StDev
  10.|-- lga15s35-in-f9.1e100.net        0.0%    10    1.9   1.9   1.8   2.0   0.0</pre>
 
         <pre>
-$ curl http://localhost:8080/api/iperf3/iperf.scottlinux.com
+$ curl https://lg.kube.picocloud.me/api/iperf3/iperf.scottlinux.com
 Connecting to host iperf.scottlinux.com, port 5201
 [  4] local 172.17.0.2 port 48142 connected to 45.33.39.39 port 5201
 [ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
@@ -68,7 +68,7 @@ Connecting to host iperf.scottlinux.com, port 5201
 iperf Done.</pre>
 
         <pre>
-$ curl http://localhost:8080/api/nping/iperf.scottlinux.com
+$ curl https://lg.kube.picocloud.me/api/nping/iperf.scottlinux.com
 
 Starting Nping 0.7.40 ( https://nmap.org/nping ) at 2018-07-13 15:36 UTC
 SENT (0.0029s) Starting TCP Handshake > iperf.scottlinux.com:80 (45.33.39.39:80)
@@ -97,7 +97,7 @@ TCP connection attempts: 10 | Successful connections: 10 | Failed: 0 (0.00%)
 Nping done: 1 IP address pinged in 9.17 seconds</pre>
 
         <pre>
-$ curl http://localhost:8080/api/host/google.com
+$ curl https://lg.kube.picocloud.me/api/host/google.com
 google.com has address 172.217.9.46
 google.com has IPv6 address 2607:f8b0:4009:815::200e
 google.com mail is handled by 50 alt4.aspmx.l.google.com.
